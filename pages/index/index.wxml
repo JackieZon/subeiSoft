@@ -7,4 +7,7 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
+  <view class="button_wrapper">
+    <button type="primary" plain="" class="" size="default"> 微信小程序组件 </button>
+  </view>
 </view>

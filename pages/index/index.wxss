@@ -19,3 +19,16 @@
 .usermotto {
   margin-top: 200px;
 }
+
+.button_wrapper {
+  margin-top: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 15px;
+}
+button[type="primary"]{
+  background: #fff;
+  color: #1AAD19;
+  border: 1px solid #1AAD19;
+}
+
