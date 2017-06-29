@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
+  <!--<view  bindtap="bindViewTap" class="userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </view>
@@ -8,6 +8,30 @@
     <text class="user-motto">{{motto}}</text>
   </view>
   <view class="button_wrapper">
-    <button type="primary" plain="" class="" size="default"> 微信小程序组件 </button>
-  </view>
+  <button type="primary" bindtap="onclick" class="" size="default"> 微信组件 </button>
+  </view>-->
+  <view class="page-body">
+    <view class="page-body-wrapper">
+      <view class="page-body-info">
+        <text class="page-body-text-small">请选择文件</text>
+          <view class="images" wx:if="{{tempFilePath != ''}}">
+            <image src="{{tempFilePath}}" class="image"></image>
+          </view>
+          <view class="images" wx:if="{{tempFilePath === '' && savedFilePath != ''}}">
+            <image src="{{savedFilePath}}" class="image"></image>
+          </view>
+          <block wx:if="{{tempFilePath === '' && savedFilePath === ''}}">
+            <view class="image-plus" bindtap="chooseImage">
+              <view class="image-plus-horizontal"></view>
+              <view class="image-plus-vertical"></view>
+            </view>
+          </block>
+        </view>
+        <view class="page-body-buttons">
+          <button class="page-body-button" type="primary" bindtap="saveFile">保存文件</button>
+          <button class="page-body-button" bindtap="clear">删除文件</button>
+        </view>
+      </view>
+    </view>
+    <modal title="{{dialog.title}}" hidden="{{dialog.hidden}}" no-cancel bindconfirm="confirm">{{dialog.content}}</modal>
 </view>

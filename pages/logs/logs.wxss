@@ -6,3 +6,9 @@
 .log-item {
   margin: 10rpx;
 }
+.container{
+  justify-content: flex-start;
+}
+.images{
+  width: 10rem;
+}

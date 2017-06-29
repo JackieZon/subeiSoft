@@ -1,12 +1,28 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/api/page-chenge/new-page"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
-  }
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "速贝科技",
+    "navigationBarTextStyle":"black",
+    "backgroundColor":"#3a3a3a",
+    "enablePullDownRefresh":"true"
+  },
+  "tabBar": {
+    "position":"bottom",
+    "color":"#32ac8e",
+    "selectedColor":"#119955",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页"
+    }, {
+      "pagePath": "pages/logs/logs",
+      "text": "日志"
+    }]
+  },
+  "debug": true
 }
