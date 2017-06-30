@@ -40,3 +40,32 @@
 }
 .image{
 }
+.group{
+  margin: 15px;
+}
+.label-1, .label-2{
+  margin-bottom: 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.label-4_text{
+  text-align: center;
+  margin-top: 30rpx;
+}
+.section_gap{
+  width: 100%;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+.cash{
+  font-size: 28px;
+  color: 	#FF4500;
+}
+.userName{
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  padding:0 15px 15px;
+  box-sizing: border-box;
+}

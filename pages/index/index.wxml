@@ -1,5 +1,7 @@
 <!--index.wxml-->
+
 <view class="container">
+      <input type="file" />
   <!--<view  bindtap="bindViewTap" class="userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
@@ -12,6 +14,7 @@
   </view>-->
   <view class="page-body">
     <view class="page-body-wrapper">
+    <text class="userName">用户名：{{userInfo.nickName}}</text>
       <view class="page-body-info">
         <text class="page-body-text-small">请选择文件</text>
           <view class="images" wx:if="{{tempFilePath != ''}}">
@@ -27,8 +30,20 @@
             </view>
           </block>
         </view>
+
+
+    <view class="section section_gap">
+      <view class="section__title">打印纸张及颜色</view>
+      <radio-group class="group" bindchange="radioChange">
+        <view class="label-2" wx:for="{{radioItems}}">
+          <label class="label-2__text" for="{{item.id}}"><text>{{item.value}}(每张<text class="cash">{{item.cash}}</text>元)</text></label>
+          <radio id="{{item.id}}" value="{{item.id}}" checked="{{item.checked}}"></radio>
+        </view>
+      </radio-group>
+    </view>
+
         <view class="page-body-buttons">
-          <button class="page-body-button" type="primary" bindtap="saveFile">保存文件</button>
+          <button class="page-body-button" type="primary" bindtap="payOrder">支付并打印</button>
           <button class="page-body-button" bindtap="clear">删除文件</button>
         </view>
       </view>

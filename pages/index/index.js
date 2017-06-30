@@ -3,6 +3,10 @@
 var app = getApp();
 Page({
   data: {
+    radioItems: [
+      {id: '1', value: 'A4黑白', cash:'0.5', checked: 'true'},
+      {id: '2', value: 'A4彩色', cash:'3.0',},
+    ],
     motto: '速贝 - 软件',
     userInfo: {},
     tempFilePath: '',
@@ -10,6 +14,34 @@ Page({
     dialog: {
       hidden: true
     }
+  },
+  payOrder(){
+    var that=this;
+
+    wx.request({
+      url: 'http://wx-print.subei88.com:8080/api/SystemUser/GetSystemUserList', 
+      data: {},
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      success: function(json){
+          wx.showModal({
+              title: '提示',
+              content: JSON.stringify(json.data),
+              success: function(res) {
+                  if (res.confirm) {
+                      console.log('用户点击确定')
+                  }
+              }
+          })
+      }
+    })
+
+
+
+    // var t_url = 'SystemUser/GetSystemUserList';
+    // var param = {}
+    // app.request(t_url,param,function(res){
+    //   console.log(res);
+    // })
   },
   chooseImage: function () {
     var that = this
@@ -76,11 +108,27 @@ Page({
     var that = this
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function(userInfo){
+      console.log(userInfo);
       //更新数据
       that.setData({
         userInfo:userInfo
       })
     })
+  },
+  radioChange(e){
+    var checked = e.detail.value
+    
+    var changed = {}
+    for (var i = 0; i < this.data.radioItems.length; i ++) {
+
+      if (checked.indexOf(this.data.radioItems[i].id) !== -1) {
+
+        changed['radioItems['+i+'].checked'] = true
+      } else {
+        changed['radioItems['+i+'].checked'] = false
+      }
+    }
+    this.setData(changed)
   },
   onPullDownRefresh(){
     console.log('我正在刷新页面');
