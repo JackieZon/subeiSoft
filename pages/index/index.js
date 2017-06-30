@@ -16,32 +16,25 @@ Page({
     }
   },
   payOrder(){
+
     var that=this;
+    var t_url = 'SystemUser/GetSystemUserList';
+    var t_param = {}
 
-    wx.request({
-      url: 'http://wx-print.subei88.com:8080/api/SystemUser/GetSystemUserList', 
-      data: {},
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      success: function(json){
-          wx.showModal({
-              title: '提示',
-              content: JSON.stringify(json.data),
-              success: function(res) {
-                  if (res.confirm) {
-                      console.log('用户点击确定')
-                  }
+    app.request(t_url,t_param,function(res){
+      
+      wx.showModal({
+          title: '提示',
+          content: JSON.stringify(res),
+          success: function(res) {
+              if (res.confirm) {
+                  console.log('用户点击确定')
               }
-          })
-      }
-    })
+          }
+      });
 
+    });
 
-
-    // var t_url = 'SystemUser/GetSystemUserList';
-    // var param = {}
-    // app.request(t_url,param,function(res){
-    //   console.log(res);
-    // })
   },
   chooseImage: function () {
     var that = this

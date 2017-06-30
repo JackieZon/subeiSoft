@@ -3,15 +3,17 @@ App({
   baseUrl:'http://wx-print.subei88.com:8080/api/',
   request(url,param,callback){
     var t_data = this;
+    console.log(t_data.baseUrl + url);
     wx.request({
       url: t_data.baseUrl + url, //仅为示例，并非真实的接口地址
       data: param,
+      method: 'GET',
       header: {
           'content-type': 'application/json'
       },
       success: function(res) {
         if(typeof(callback)=='function'){
-          callback(res)
+          callback(res.data)
         }
       }
     })
